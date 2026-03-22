@@ -14,12 +14,16 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        id: setup-android
         with:
-          packages: 'ndk;25.2.9519653' # Formato correcto para el NDK
+          packages: 'ndk;25.2.9519653'
 
       - name: Build with Gradle
-        # Forzamos la compilación aunque haya warnings
-        run: gradle assembleDebug --stacktrace
+        # Usamos :app:assembleDebug para forzar la búsqueda en el módulo correcto
+        run: |
+          # Solo por seguridad, listamos archivos para confirmar la estructura
+          ls -R 
+          gradle :app:assembleDebug --stacktrace
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-android.outputs.sdk-path }}/ndk/25.2.9519653
 
@@ -27,6 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Pathfinder-Bot-Debug
-          # Buscamos en todas las subcarpetas del build por si acaso
           path: "**/build/outputs/apk/debug/*.apk"
           if-no-files-found: error

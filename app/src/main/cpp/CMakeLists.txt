@@ -16,7 +16,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(dobby)
 
 # ── gd-sim source files ──────────────────────────────────────────────────────
-set(GD_SIM_ROOT "${CMAKE_SOURCE_DIR}/../../../../../pathfinder-main/pathfinder-main/gd-sim")
+set(GD_SIM_ROOT "${CMAKE_SOURCE_DIR}/../../../../pathfinder-main/pathfinder-main/gd-sim")
 
 file(GLOB_RECURSE GD_SIM_SOURCES
     "${GD_SIM_ROOT}/src/EffectObject.cpp"
@@ -37,7 +37,7 @@ file(GLOB_RECURSE GD_SIM_SOURCES
     "${GD_SIM_ROOT}/src/Objects/VehiclePortal.cpp"
 )
 
-set(PATHFINDER_SRC_ROOT "${CMAKE_SOURCE_DIR}/../../../../../pathfinder-main/pathfinder-main/src")
+set(PATHFINDER_SRC_ROOT "${CMAKE_SOURCE_DIR}/../../../../pathfinder-main/pathfinder-main/src")
 
 # ── pathfinder_jni (App JNI) ─────────────────────────────────────────────────
 add_library(pathfinder_jni SHARED
